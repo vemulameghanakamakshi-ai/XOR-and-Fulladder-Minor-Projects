@@ -1,0 +1,35 @@
+* XOR GATE - CMOS NAND implementation
+* Generic educational models; not process-calibrated.
+
+.model NM NMOS (LEVEL=1 VTO=0.7 KP=120u LAMBDA=0.02)
+.model PM PMOS (LEVEL=1 VTO=-0.7 KP=50u LAMBDA=0.02)
+
+
+.subckt INV A Y VDD VSS
+MP Y A VDD VDD PM W=4u L=1u
+MN Y A VSS VSS NM W=2u L=1u
+.ends INV
+
+
+.subckt NAND2 A B Y VDD VSS
+MP1 Y A VDD VDD PM W=4u L=1u
+MP2 Y B VDD VDD PM W=4u L=1u
+MN1 Y A NINT VSS NM W=2u L=1u
+MN2 NINT B VSS VSS NM W=2u L=1u
+.ends NAND2
+
+.subckt XOR_CM A B Y VDD VSS
+X1 A B N1 VDD VSS NAND2
+X2 A N1 N2 VDD VSS NAND2
+X3 B N1 N3 VDD VSS NAND2
+X4 N2 N3 Y VDD VSS NAND2
+.ends XOR_CM
+
+
+V1 VDD 0 5
+VA A 0 PULSE(0 5 0 1n 1n 2u 4u)
+VB B 0 PULSE(0 5 0 1n 1n 1u 2u)
+XG A B Y VDD 0 XOR_CM
+.tran 0 4u 0 1n
+.save V(A) V(B) V(Y) V(VDD)
+.end

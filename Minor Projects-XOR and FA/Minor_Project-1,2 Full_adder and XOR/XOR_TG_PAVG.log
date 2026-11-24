@@ -1,0 +1,39 @@
+LTspice 26.1.1 for Windows
+Circuit: C:\Users\HP745G6\Desktop\Minor Projects-XOR and FA\Minor_Project-1,2 Full_adder and XOR\XOR_TG_PAVG.cir
+Start Time: Tue Nov 24 14:58:08 2026
+solver = Normal
+Maximum thread count: 8
+tnom = 27
+temp = 27
+method = trap
+Instance "xg:xb:MN": Length shorter than recommended for a level 1 MOSFET.
+Instance "xg:xb:MN": Width narrower than recommended for a level 1 MOSFET.
+Instance "xg:xa:MN": Length shorter than recommended for a level 1 MOSFET.
+Instance "xg:xa:MN": Width narrower than recommended for a level 1 MOSFET.
+Instance "xg:xm:xs:MN": Length shorter than recommended for a level 1 MOSFET.
+Instance "xg:xm:xs:MN": Width narrower than recommended for a level 1 MOSFET.
+Instance "xg:xm:MN0": Length shorter than recommended for a level 1 MOSFET.
+Instance "xg:xm:MN0": Width narrower than recommended for a level 1 MOSFET.
+Instance "xg:xm:MN1": Length shorter than recommended for a level 1 MOSFET.
+Instance "xg:xm:MN1": Width narrower than recommended for a level 1 MOSFET.
+Instance "xg:xb:MP": Length shorter than recommended for a level 1 MOSFET.
+Instance "xg:xb:MP": Width narrower than recommended for a level 1 MOSFET.
+Instance "xg:xa:MP": Length shorter than recommended for a level 1 MOSFET.
+Instance "xg:xa:MP": Width narrower than recommended for a level 1 MOSFET.
+Instance "xg:xm:xs:MP": Length shorter than recommended for a level 1 MOSFET.
+Instance "xg:xm:xs:MP": Width narrower than recommended for a level 1 MOSFET.
+Instance "xg:xm:MP0": Length shorter than recommended for a level 1 MOSFET.
+Instance "xg:xm:MP0": Width narrower than recommended for a level 1 MOSFET.
+Instance "xg:xm:MP1": Length shorter than recommended for a level 1 MOSFET.
+Instance "xg:xm:MP1": Width narrower than recommended for a level 1 MOSFET.
+Direct Newton iteration succeeded in finding operating point.
+Total elapsed time: 51.347 seconds.
+Total iterations: 8000059
+
+Files loaded:
+C:\Users\HP745G6\Desktop\Minor Projects-XOR and FA\Minor_Project-1,2 Full_adder and XOR\XOR_TG_PAVG.cir
+
+pavg: AVG(-V(VDD)*I(V1))=3.46626262404e-07 FROM 0 TO 4e-06
+tplh=1.25906242528e-11 FROM 1.0005e-06 TO 1.00051259062e-06
+tphl=1.26306383362e-11 FROM 2.0015e-06 TO 2.00151263064e-06
+tpd: (tPLH+tPHL)/2=1.26106312945e-11

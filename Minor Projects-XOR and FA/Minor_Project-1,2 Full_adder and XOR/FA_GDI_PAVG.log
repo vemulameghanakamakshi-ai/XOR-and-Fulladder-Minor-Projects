@@ -1,0 +1,63 @@
+LTspice 26.1.1 for Windows
+Circuit: C:\Users\HP745G6\Desktop\Minor Projects-XOR and FA\Minor_Project-1,2 Full_adder and XOR\FA_GDI_PAVG.cir
+Start Time: Tue Nov 24 14:44:17 2026
+solver = Normal
+Maximum thread count: 8
+tnom = 27
+temp = 27
+method = trap
+Instance "xfa:x1:MN": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x1:MN": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x2:xs:MN": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x2:xs:MN": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x2:MN0": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x2:MN0": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x2:MN1": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x2:MN1": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x3:MN": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x3:MN": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x4:xs:MN": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x4:xs:MN": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x4:MN0": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x4:MN0": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x4:MN1": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x4:MN1": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x5:xs:MN": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x5:xs:MN": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x5:MN0": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x5:MN0": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x5:MN1": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x5:MN1": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x1:MP": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x1:MP": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x2:xs:MP": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x2:xs:MP": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x2:MP0": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x2:MP0": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x2:MP1": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x2:MP1": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x3:MP": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x3:MP": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x4:xs:MP": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x4:xs:MP": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x4:MP0": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x4:MP0": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x4:MP1": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x4:MP1": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x5:xs:MP": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x5:xs:MP": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x5:MP0": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x5:MP0": Width narrower than recommended for a level 1 MOSFET.
+Instance "xfa:x5:MP1": Length shorter than recommended for a level 1 MOSFET.
+Instance "xfa:x5:MP1": Width narrower than recommended for a level 1 MOSFET.
+Direct Newton iteration succeeded in finding operating point.
+Total elapsed time: 0.709 seconds.
+Total iterations: 16562
+
+Files loaded:
+C:\Users\HP745G6\Desktop\Minor Projects-XOR and FA\Minor_Project-1,2 Full_adder and XOR\FA_GDI_PAVG.cir
+
+pavg: AVG(-V(VDD)*I(V1))=2.24357853782e-07 FROM 0 TO 5e-06
+tplh_sum=4.9974564629e-12 FROM 1.00050000001e-06 TO 1.00050499746e-06
+tphl_sum=2.41480931642e-11 FROM 5.00149999999e-06 TO 5.00152414808e-06
+tpd_sum: (tPLH_SUM+tPHL_SUM)/2=1.45727748136e-11

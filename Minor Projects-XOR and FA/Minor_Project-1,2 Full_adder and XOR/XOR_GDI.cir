@@ -1,0 +1,38 @@
+* XOR GATE - EDUCATIONAL MUX PROXY; not canonical GDI
+* Generic educational models; not process-calibrated.
+
+.model NM NMOS (LEVEL=1 VTO=0.7 KP=120u LAMBDA=0.02)
+.model PM PMOS (LEVEL=1 VTO=-0.7 KP=50u LAMBDA=0.02)
+
+
+.subckt INV A Y VDD VSS
+MP Y A VDD VDD PM W=4u L=1u
+MN Y A VSS VSS NM W=2u L=1u
+.ends INV
+
+
+.subckt TGMUX D0 D1 S Y VDD VSS
+XS S SB VDD VSS INV
+* D0 path enabled when S=0: NMOS gate=SB, PMOS gate=S
+MN0 Y SB D0 VSS NM W=2u L=1u
+MP0 Y S D0 VDD PM W=4u L=1u
+* D1 path enabled when S=1: NMOS gate=S, PMOS gate=SB
+MN1 Y S D1 VSS NM W=2u L=1u
+MP1 Y SB D1 VDD PM W=4u L=1u
+.ends TGMUX
+
+
+* EDUCATIONAL MUX-BASED PROXY ONLY. Confirm canonical GDI topology with instructor.
+.subckt XOR_G A B Y VDD VSS
+XB B BN VDD VSS INV
+XM B BN A Y VDD VSS TGMUX
+.ends XOR_G
+
+V1 VDD 0 5
+VA A 0 0
+VB B 0 PULSE(0 5 0 1n 1n 1u 2u)
+XG A B Y VDD 0 XOR_G
+.tran 0 4u 0 1n
+.save V(A) V(B) V(Y) V(VDD)I(V1)
+.meas TRAN PAVG AVG (-V(VDD)*I(V1)) FROM=0 TO=4u
+.end

@@ -1,0 +1,75 @@
+Comparative Analysis of Full Adders and XOR Gates Using Transistor-Level Designs
+
+  Cover page
+Student name: Vemula Meghana Kamakshi
+Department / college: Sri Venkateswara College of Engineering
+Academic year: 2025-2029
+
+  Abstract
+This project studies transistor-level implementations of XOR gates and 1-bit full adders using CMOS, Pass Transistor Logic (PTL), Transmission Gate (TG), and Gate Diffusion Input (GDI) approaches. The designs are functionally verified using transient simulation, then compared using transistor count, average power, propagation delay, power-delay product, and output voltage swing. All results are measured from the final schematics and documented simulation conditions.
+
+  1. Objectives
+1. Design and simulate XOR gate implementations.
+2. Design and simulate a 1-bit full adder using the assigned logic styles.
+3. Verify each circuit against its truth table.
+4. Compare electrical performance under consistent conditions.
+5. Identify trade-offs among power, delay, transistor count, and logic-level quality.
+
+  2. Theory
+XOR: Y = A'B + AB'
+Full-adder Sum: SUM = A XOR B XOR CIN
+Full-adder Carry: COUT = AB + ACIN + BCIN
+Equivalent carry expression, with P = A XOR B: COUT = AB + P*CIN
+
+  3. Tools and models
+Simulator/version: LTspice / 26.1.1
+
+NOTE: The included starter netlists use generic Level-1 models and are for learning/initial verification. 
+
+  4. Design methodology
+For each design:
+- Draw/inspect the transistor-level schematic.
+- Record every transistor and any required inverter/buffer.
+- Run transient analysis.
+- Verify every truth-table combination.
+- Measure output high/low levels.
+- Measure SUM/Y and COUT delay.
+- Calculate average supply power over a stated interval.
+- Calculate PDP = Pavg * tp.
+
+  5. XOR truth table
+| A | B | Y = A XOR B |
+|---|---|---|
+| 0 | 0 | 0 |
+| 0 | 1 | 1 |
+| 1 | 0 | 1 |
+| 1 | 1 | 0 |
+
+  6. Full-adder truth table
+| A | B | CIN | SUM | COUT |
+|---|---|---  |---  |---|
+| 0 | 0 | 0   | 0   | 0 |
+| 0 | 0 | 1   | 1   | 0 |
+| 0 | 1 | 0   | 1   | 0 |
+| 0 | 1 | 1   | 0   | 1 |
+| 1 | 0 | 0   | 1   | 0 |
+| 1 | 0 | 1   | 0   | 1 |
+| 1 | 1 | 0   | 0   | 1 |
+| 1 | 1 | 1   | 1   | 1 |
+
+  7. Simulation results
+### XOR comparison
+| Parameter              | CMOS  | PTL   | TG    | GDI   |
+| Average power (uW)     | 0.4500|0.4620 |0.3466 |0.3466 |
+| Propagation delay (ns) |0.0289 |0.0234 | 0.0126|0.0126 |
+| PDP (fJ)               | 0.0130| 0.0108|0.0044 |0.0044 |
+| Truth table passed?    | yes   |yes    |yes    |yes    |
+
+### Full-adder comparison
+| Parameter          | CMOS    | PTL              | TG               | GDI     |
+| Average power (uW) |0.177645 |0.517460          |0.500764          |0.224358 |
+| SUM delay (ns)     |0.018505 |0.446721          |0.014886          |0.014573 |
+| PDP (fJ)           | 0.003287|0.231160          |0.007454          |0.003270 |
+| Truth table passed?|passed   |passed with       |passed with       | passed  |
+			       |transient glitches|transient glitches|
+ 

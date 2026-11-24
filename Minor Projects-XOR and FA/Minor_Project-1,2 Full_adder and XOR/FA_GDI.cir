@@ -1,0 +1,44 @@
+* FULL ADDER - EDUCATIONAL MUX PROXY; not canonical GDI
+* Generic educational models; not process-calibrated.
+
+.model NM NMOS (LEVEL=1 VTO=0.7 KP=120u LAMBDA=0.02)
+.model PM PMOS (LEVEL=1 VTO=-0.7 KP=50u LAMBDA=0.02)
+
+
+.subckt INV A Y VDD VSS
+MP Y A VDD VDD PM W=4u L=1u
+MN Y A VSS VSS NM W=2u L=1u
+.ends INV
+
+
+
+
+
+.subckt TGMUX D0 D1 S Y VDD VSS
+XS S SB VDD VSS INV
+* D0 path enabled when S=0: NMOS gate=SB, PMOS gate=S
+MN0 Y SB D0 VSS NM W=2u L=1u
+MP0 Y S D0 VDD PM W=4u L=1u
+* D1 path enabled when S=1: NMOS gate=S, PMOS gate=SB
+MN1 Y S D1 VSS NM W=2u L=1u
+MP1 Y SB D1 VDD PM W=4u L=1u
+.ends TGMUX
+
+
+* EDUCATIONAL MUX-BASED PROXY ONLY. Confirm required GDI topology/body ties with instructor.
+.subckt FA A B CIN SUM COUT VDD VSS
+X1 B BN VDD VSS INV
+X2 B BN A P VDD VSS TGMUX
+X3 CIN CINB VDD VSS INV
+X4 CIN CINB P SUM VDD VSS TGMUX
+X5 A CIN P COUT VDD VSS TGMUX
+.ends FA
+
+V1 VDD 0 5
+VA A 0 PULSE(0 5 0 1n 1n 4u 8u)
+VB B 0 PULSE(0 5 0 1n 1n 2u 4u)
+VC CIN 0 PULSE(0 5 0 1n 1n 1u 2u)
+XFA A B CIN SUM COUT VDD 0 FA
+.tran 0 8u 0 1n
+.save V(A) V(B) V(CIN) V(SUM) V(COUT) V(VDD)
+.end

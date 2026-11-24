@@ -1,0 +1,50 @@
+* FULL ADDER - transmission-gate mux implementation
+* Generic educational models; not process-calibrated.
+
+.model NM NMOS (LEVEL=1 VTO=0.7 KP=120u LAMBDA=0.02)
+.model PM PMOS (LEVEL=1 VTO=-0.7 KP=50u LAMBDA=0.02)
+
+
+.subckt INV A Y VDD VSS
+MP Y A VDD VDD PM W=4u L=1u
+MN Y A VSS VSS NM W=2u L=1u
+.ends INV
+
+
+
+
+
+.subckt TGMUX D0 D1 S Y VDD VSS
+XS S SB VDD VSS INV
+* D0 path enabled when S=0: NMOS gate=SB, PMOS gate=S
+MN0 Y SB D0 VSS NM W=2u L=1u
+MP0 Y S D0 VDD PM W=4u L=1u
+* D1 path enabled when S=1: NMOS gate=S, PMOS gate=SB
+MN1 Y S D1 VSS NM W=2u L=1u
+MP1 Y SB D1 VDD PM W=4u L=1u
+.ends TGMUX
+
+
+.subckt FA A B CIN SUM COUT VDD VSS
+X1 B BN VDD VSS INV
+X2 B BN A P VDD VSS TGMUX
+X3 CIN CINB VDD VSS INV
+X4 CIN CINB P SUM VDD VSS TGMUX
+XAND 0 CIN A CAND VDD VSS TGMUX
+XOR2 CIN VDD A COR VDD VSS TGMUX
+XCARRY CAND COR B COUT VDD VSS TGMUX
+.ends FA
+
+V1 VDD 0 5
+VA A 0 PULSE(0 5 1u 1n 1n 4u 8u)
+VB B 0 0
+VC CIN 0 0
+XFA A B CIN SUM COUT VDD 0 FA
+CSUM SUM 0 10f
+.tran 0 8u 0 1n
+.save V(A) V(B) V(CIN) V(SUM) V(COUT) V(VDD) I(V1)
+.meas TRAN PAVG AVG (-V(VDD)*I(V1)) FROM=0 TO=5u
+.meas TRAN tPLH_SUM TRIG V(A) VAL=2.5 RISE=1 TARG V(SUM) VAL=2.5 RISE=1
+.meas TRAN tPHL_SUM TRIG V(A) VAL=2.5 FALL=1 TARG V(SUM) VAL=2.5 FALL=1
+.meas TRAN tPD_SUM PARAM (tPLH_SUM+tPHL_SUM)/2
+.end
